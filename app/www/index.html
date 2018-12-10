@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width">
+<link rel="canonical" href="https://thisperiodictable.com/" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="periodic-table.css">
+<title>Periodic Table and Molar Mass Calculator</title>
+<meta name="description" id="meta-description" content="Use this periodic table for calculating molar mass for any chemical formula. Options for hiding the symbol or name of the elements provide a handy learning aid for memorizing the periodic table. iOS app is also available.">
+<meta name="keywords" content="periodic table, molar mass, calculator, h2o, molecular weight, chemistry, chemical formula, element">
+</head>
+<body>
+<div class="container">
+
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>New Functionality!</strong> We have a new button <code>m=nM</code>. (4 March 2018)
+</div>
+
+<div class="row">
+<div class="col-md-12">
+  <table>
+    <tr>
+      <td class="group">1</td>
+      <td class="group">2</td>
+      <td class="group">3</td>
+      <td class="group">4</td>
+      <td class="group">5</td>
+      <td class="group">6</td>
+      <td class="group">7</td>
+      <td class="group">8</td>
+      <td class="group">9</td>
+      <td class="group">10</td>
+      <td class="group">11</td>
+      <td class="group">12</td>
+      <td class="group">13</td>
+      <td class="group">14</td>
+      <td class="group">15</td>
+      <td class="group">16</td>
+      <td class="group">17</td>
+      <td class="group">18</td>
+    </tr>
+    <tr>
+      <td class="element" id="H"><span class="number">1<br></span><span class="symbol">H<br></span><span class="name">Hydrogen<br></span><span class="weight">1.008</span></td>
+      <td class="empty"></td>
+      <td colspan="7" rowspan="3" class="empty">
+        <div id="result_header">
+          <h1>Periodic Table</h1>
+          <p>Select elements and see the molar mass of the compound</p>
+        </div>
+        <div id="result_formula" class="hide_me">
+          <h2>
+            <span class="result_header">Chemical formula (Hill notation)</span><br>
+            <span id="formula_value"></span>
+          </h2>
+          <h2>
+            <span class="result_header">Molar mass (g/mol)</span><br>
+            <span id="mass_value"></span>
+          </h2>
+          <p>
+            <button id="modify" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Modify</button>
+            <button id="clear" class="btn btn-default btn-lg">Clear</button>
+            <button id="percent" class="btn btn-default btn-lg">%</button>
+            <button id="mass" class="btn btn-default btn-lg" data-toggle="modal" data-target="#massModal">m=nM</button>
+          </p>
+        </div>
+      </td>
+      <td colspan="3" rowspan="3" class="empty">
+        <div id="result_element">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="checkbox"><label><input type="checkbox" id="number" checked><span id="number_text">Number</span></label></div>
+            <div class="checkbox"><label><input type="checkbox" id="symbol" checked><span id="symbol_text">Symbol</span></label></div>
+            <div class="checkbox"><label><input type="checkbox" id="name" checked><span id="name_text">Name</span></label></div>
+            <div class="checkbox"><label><input type="checkbox" id="weight" checked><span id="weight_text">Weight</span></label></div>
+        </div>
+        </div>
+        </div>
+      </td>
+      <td colspan="5" class="empty"></td>
+      <td class="element" id="He"><span class="number">2<br></span><span class="symbol">He<br></span><span class="name">Helium<br></span><span class="weight">4.002602</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="Li"><span class="number">3<br></span><span class="symbol">Li<br></span><span class="name">Lithium<br></span><span class="weight">6.94</span></td>
+      <td class="element" id="Be"><span class="number">4<br></span><span class="symbol">Be<br></span><span class="name">Beryllium<br></span><span class="weight">9.0121831</span></td>
+      <td class="element" id="B"><span class="number">5<br></span><span class="symbol">B<br></span><span class="name">Boron<br></span><span class="weight">10.81</span></td>
+      <td class="element" id="C"><span class="number">6<br></span><span class="symbol">C<br></span><span class="name">Carbon<br></span><span class="weight">12.011</span></td>
+      <td class="element" id="N"><span class="number">7<br></span><span class="symbol">N<br></span><span class="name">Nitrogen<br></span><span class="weight">14.007</span></td>
+      <td class="element" id="O"><span class="number">8<br></span><span class="symbol">O<br></span><span class="name">Oxygen<br></span><span class="weight">15.999</span></td>
+      <td class="element" id="F"><span class="number">9<br></span><span class="symbol">F<br></span><span class="name">Fluorine<br></span><span class="weight">18.998403163</span></td>
+      <td class="element" id="Ne"><span class="number">10<br></span><span class="symbol">Ne<br></span><span class="name">Neon<br></span><span class="weight">20.1797</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="Na"><span class="number">11<br></span><span class="symbol">Na<br></span><span class="name">Sodium<br></span><span class="weight">22.98976928</span></td>
+      <td class="element" id="Mg"><span class="number">12<br></span><span class="symbol">Mg<br></span><span class="name">Magnesium<br></span><span class="weight">24.305</span></td>
+      <td class="element" id="Al"><span class="number">13<br></span><span class="symbol">Al<br></span><span class="name">Aluminium<br></span><span class="weight">26.9815385</span></td>
+      <td class="element" id="Si"><span class="number">14<br></span><span class="symbol">Si<br></span><span class="name">Silicon<br></span><span class="weight">28.085</span></td>
+      <td class="element" id="P"><span class="number">15<br></span><span class="symbol">P<br></span><span class="name">Phosphorus<br></span><span class="weight">30.973761998</span></td>
+      <td class="element" id="S"><span class="number">16<br></span><span class="symbol">S<br></span><span class="name">Sulfur<br></span><span class="weight">32.06</span></td>
+      <td class="element" id="Cl"><span class="number">17<br></span><span class="symbol">Cl<br></span><span class="name">Chlorine<br></span><span class="weight">35.45</span></td>
+      <td class="element" id="Ar"><span class="number">18<br></span><span class="symbol">Ar<br></span><span class="name">Argon<br></span><span class="weight">39.948</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="K"><span class="number">19<br></span><span class="symbol">K<br></span><span class="name">Potassium<br></span><span class="weight">39.0983</span></td>
+      <td class="element" id="Ca"><span class="number">20<br></span><span class="symbol">Ca<br></span><span class="name">Calcium<br></span><span class="weight">40.078</span></td>
+      <td class="element" id="Sc"><span class="number">21<br></span><span class="symbol">Sc<br></span><span class="name">Scandium<br></span><span class="weight">44.955908</span></td>
+      <td class="element" id="Ti"><span class="number">22<br></span><span class="symbol">Ti<br></span><span class="name">Titanium<br></span><span class="weight">47.867</span></td>
+      <td class="element" id="V"><span class="number">23<br></span><span class="symbol">V<br></span><span class="name">Vanadium<br></span><span class="weight">50.9415</span></td>
+      <td class="element" id="Cr"><span class="number">24<br></span><span class="symbol">Cr<br></span><span class="name">Chromium<br></span><span class="weight">51.9961</span></td>
+      <td class="element" id="Mn"><span class="number">25<br></span><span class="symbol">Mn<br></span><span class="name">Manganese<br></span><span class="weight">54.938044</span></td>
+      <td class="element" id="Fe"><span class="number">26<br></span><span class="symbol">Fe<br></span><span class="name">Iron<br></span><span class="weight">55.845</span></td>
+      <td class="element" id="Co"><span class="number">27<br></span><span class="symbol">Co<br></span><span class="name">Cobalt<br></span><span class="weight">58.933194</span></td>
+      <td class="element" id="Ni"><span class="number">28<br></span><span class="symbol">Ni<br></span><span class="name">Nickel<br></span><span class="weight">58.6934</span></td>
+      <td class="element" id="Cu"><span class="number">29<br></span><span class="symbol">Cu<br></span><span class="name">Copper<br></span><span class="weight">63.546</span></td>
+      <td class="element" id="Zn"><span class="number">30<br></span><span class="symbol">Zn<br></span><span class="name">Zinc<br></span><span class="weight">65.38</span></td>
+      <td class="element" id="Ga"><span class="number">31<br></span><span class="symbol">Ga<br></span><span class="name">Gallium<br></span><span class="weight">69.723</span></td>
+      <td class="element" id="Ge"><span class="number">32<br></span><span class="symbol">Ge<br></span><span class="name">Germanium<br></span><span class="weight">72.630</span></td>
+      <td class="element" id="As"><span class="number">33<br></span><span class="symbol">As<br></span><span class="name">Arsenic<br></span><span class="weight">74.921595</span></td>
+      <td class="element" id="Se"><span class="number">34<br></span><span class="symbol">Se<br></span><span class="name">Selenium<br></span><span class="weight">78.971</span></td>
+      <td class="element" id="Br"><span class="number">35<br></span><span class="symbol">Br<br></span><span class="name">Bromine<br></span><span class="weight">79.904</span></td>
+      <td class="element" id="Kr"><span class="number">36<br></span><span class="symbol">Kr<br></span><span class="name">Krypton<br></span><span class="weight">83.798</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="Rb"><span class="number">37<br></span><span class="symbol">Rb<br></span><span class="name">Rubidium<br></span><span class="weight">85.4678</span></td>
+      <td class="element" id="Sr"><span class="number">38<br></span><span class="symbol">Sr<br></span><span class="name">Strontium<br></span><span class="weight">87.62</span></td>
+      <td class="element" id="Y"><span class="number">39<br></span><span class="symbol">Y<br></span><span class="name">Yttrium<br></span><span class="weight">88.90584</span></td>
+      <td class="element" id="Zr"><span class="number">40<br></span><span class="symbol">Zr<br></span><span class="name">Zirconium<br></span><span class="weight">91.224</span></td>
+      <td class="element" id="Nb"><span class="number">41<br></span><span class="symbol">Nb<br></span><span class="name">Niobium<br></span><span class="weight">92.90637</span></td>
+      <td class="element" id="Mo"><span class="number">42<br></span><span class="symbol">Mo<br></span><span class="name">Molybdenum<br></span><span class="weight">95.95</span></td>
+      <td class="element" id="Tc"><span class="number">43<br></span><span class="symbol">Tc<br></span><span class="name">Technetium<br></span><span class="weight">[97]</span></td>
+      <td class="element" id="Ru"><span class="number">44<br></span><span class="symbol">Ru<br></span><span class="name">Ruthenium<br></span><span class="weight">101.07</span></td>
+      <td class="element" id="Rh"><span class="number">45<br></span><span class="symbol">Rh<br></span><span class="name">Rhodium<br></span><span class="weight">102.90550</span></td>
+      <td class="element" id="Pd"><span class="number">46<br></span><span class="symbol">Pd<br></span><span class="name">Palladium<br></span><span class="weight">106.42</span></td>
+      <td class="element" id="Ag"><span class="number">47<br></span><span class="symbol">Ag<br></span><span class="name">Silver<br></span><span class="weight">107.8682</span></td>
+      <td class="element" id="Cd"><span class="number">48<br></span><span class="symbol">Cd<br></span><span class="name">Cadmium<br></span><span class="weight">112.414</span></td>
+      <td class="element" id="In"><span class="number">49<br></span><span class="symbol">In<br></span><span class="name">Indium<br></span><span class="weight">114.818</span></td>
+      <td class="element" id="Sn"><span class="number">50<br></span><span class="symbol">Sn<br></span><span class="name">Tin<br></span><span class="weight">118.710</span></td>
+      <td class="element" id="Sb"><span class="number">51<br></span><span class="symbol">Sb<br></span><span class="name">Antimony<br></span><span class="weight">121.760</span></td>
+      <td class="element" id="Te"><span class="number">52<br></span><span class="symbol">Te<br></span><span class="name">Tellurium<br></span><span class="weight">127.60</span></td>
+      <td class="element" id="I"><span class="number">53<br></span><span class="symbol">I<br></span><span class="name">Iodine<br></span><span class="weight">126.90447</span></td>
+      <td class="element" id="Xe"><span class="number">54<br></span><span class="symbol">Xe<br></span><span class="name">Xenon<br></span><span class="weight">131.293</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="Cs"><span class="number">55<br></span><span class="symbol">Cs<br></span><span class="name">Caesium<br></span><span class="weight">132.90545196</span></td>
+      <td class="element" id="Ba"><span class="number">56<br></span><span class="symbol">Ba<br></span><span class="name">Barium<br></span><span class="weight">137.327</span></td>
+      <td class="element" id="La"><span class="number">57<br></span><span class="symbol">La<br></span><span class="name">Lanthanum<br></span><span class="weight">138.90547</span></td>
+      <td class="element" id="Hf"><span class="number">72<br></span><span class="symbol">Hf<br></span><span class="name">Hafnium<br></span><span class="weight">178.49</span></td>
+      <td class="element" id="Ta"><span class="number">73<br></span><span class="symbol">Ta<br></span><span class="name">Tantalum<br></span><span class="weight">180.94788</span></td>
+      <td class="element" id="W"><span class="number">74<br></span><span class="symbol">W<br></span><span class="name">Tungsten<br></span><span class="weight">183.84</span></td>
+      <td class="element" id="Re"><span class="number">75<br></span><span class="symbol">Re<br></span><span class="name">Rhenium<br></span><span class="weight">186.207</span></td>
+      <td class="element" id="Os"><span class="number">76<br></span><span class="symbol">Os<br></span><span class="name">Osmium<br></span><span class="weight">190.23</span></td>
+      <td class="element" id="Ir"><span class="number">77<br></span><span class="symbol">Ir<br></span><span class="name">Iridium<br></span><span class="weight">192.217</span></td>
+      <td class="element" id="Pt"><span class="number">78<br></span><span class="symbol">Pt<br></span><span class="name">Platinum<br></span><span class="weight">195.084</span></td>
+      <td class="element" id="Au"><span class="number">79<br></span><span class="symbol">Au<br></span><span class="name">Gold<br></span><span class="weight">196.966569</span></td>
+      <td class="element" id="Hg"><span class="number">80<br></span><span class="symbol">Hg<br></span><span class="name">Mercury<br></span><span class="weight">200.592</span></td>
+      <td class="element" id="Tl"><span class="number">81<br></span><span class="symbol">Tl<br></span><span class="name">Thallium<br></span><span class="weight">204.38</span></td>
+      <td class="element" id="Pb"><span class="number">82<br></span><span class="symbol">Pb<br></span><span class="name">Lead<br></span><span class="weight">207.2</span></td>
+      <td class="element" id="Bi"><span class="number">83<br></span><span class="symbol">Bi<br></span><span class="name">Bismuth<br></span><span class="weight">208.98040</span></td>
+      <td class="element" id="Po"><span class="number">84<br></span><span class="symbol">Po<br></span><span class="name">Polonium<br></span><span class="weight">[209]</span></td>
+      <td class="element" id="At"><span class="number">85<br></span><span class="symbol">At<br></span><span class="name">Astatine<br></span><span class="weight">[210]</span></td>
+      <td class="element" id="Rn"><span class="number">86<br></span><span class="symbol">Rn<br></span><span class="name">Radon<br></span><span class="weight">[222]</span></td>
+    </tr>
+    <tr>
+      <td class="element" id="Fr"><span class="number">87<br></span><span class="symbol">Fr<br></span><span class="name">Francium<br></span><span class="weight">[223]</span></td>
+      <td class="element" id="Ra"><span class="number">88<br></span><span class="symbol">Ra<br></span><span class="name">Radium<br></span><span class="weight">[226]</span></td>
+      <td class="element" id="Ac"><span class="number">89<br></span><span class="symbol">Ac<br></span><span class="name">Actinium<br></span><span class="weight">[227]</span></td>
+      <td class="element" id="Rf"><span class="number">104<br></span><span class="symbol">Rf<br></span><span class="name">Rutherfordium<br></span><span class="weight">[267]</span></td>
+      <td class="element" id="Db"><span class="number">105<br></span><span class="symbol">Db<br></span><span class="name">Dubnium<br></span><span class="weight">[270]</span></td>
+      <td class="element" id="Sg"><span class="number">106<br></span><span class="symbol">Sg<br></span><span class="name">Seaborgium<br></span><span class="weight">[271]</span></td>
+      <td class="element" id="Bh"><span class="number">107<br></span><span class="symbol">Bh<br></span><span class="name">Bohrium<br></span><span class="weight">[270]</span></td>
+      <td class="element" id="Hs"><span class="number">108<br></span><span class="symbol">Hs<br></span><span class="name">Hassium<br></span><span class="weight">[277]</span></td>
+      <td class="element" id="Mt"><span class="number">109<br></span><span class="symbol">Mt<br></span><span class="name">Meitnerium<br></span><span class="weight">[276]</span></td>
+      <td class="element" id="Ds"><span class="number">110<br></span><span class="symbol">Ds<br></span><span class="name">Darmstadtium<br></span><span class="weight">[281]</span></td>
+      <td class="element" id="Rg"><span class="number">111<br></span><span class="symbol">Rg<br></span><span class="name">Roentgenium<br></span><span class="weight">[282]</span></td>
+      <td class="element" id="Cn"><span class="number">112<br></span><span class="symbol">Cn<br></span><span class="name">Copernicium<br></span><span class="weight">[285]</span></td>
+      <td class="element" id="Nh"><span class="number">113<br></span><span class="symbol">Nh<br></span><span class="name">Nihonium<br></span><span class="weight">[285]</span></td>
+      <td class="element" id="Fl"><span class="number">114<br></span><span class="symbol">Fl<br></span><span class="name">Flerovium<br></span><span class="weight">[289]</span></td>
+      <td class="element" id="Mc"><span class="number">115<br></span><span class="symbol">Mc<br></span><span class="name">Moscovium<br></span><span class="weight">[289]</span></td>
+      <td class="element" id="Lv"><span class="number">116<br></span><span class="symbol">Lv<br></span><span class="name">Livermorium<br></span><span class="weight">[293]</span></td>
+      <td class="element" id="Ts"><span class="number">117<br></span><span class="symbol">Ts<br></span><span class="name">Tennessine<br></span><span class="weight">[294]</span></td>
+      <td class="element" id="Og"><span class="number">118<br></span><span class="symbol">Og<br></span><span class="name">Oganesson<br></span><span class="weight">[294]</span></td>
+    </tr>
+    <tr>
+      <td colspan="18" class="empty"></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="empty"></td>
+      <td class="element" id="Ce"><span class="number">58<br></span><span class="symbol">Ce<br></span><span class="name">Cerium<br></span><span class="weight">140.116</span></td>
+      <td class="element" id="Pr"><span class="number">59<br></span><span class="symbol">Pr<br></span><span class="name">Praseodymium <br></span><span class="weight">140.90766</span></td>
+      <td class="element" id="Nd"><span class="number">60<br></span><span class="symbol">Nd<br></span><span class="name">Neodymium<br></span><span class="weight">144.242</span></td>
+      <td class="element" id="Pm"><span class="number">61<br></span><span class="symbol">Pm<br></span><span class="name">Promethium<br></span><span class="weight">[145]</span></td>
+      <td class="element" id="Sm"><span class="number">62<br></span><span class="symbol">Sm<br></span><span class="name">Samarium<br></span><span class="weight">150.36</span></td>
+      <td class="element" id="Eu"><span class="number">63<br></span><span class="symbol">Eu<br></span><span class="name">Europium<br></span><span class="weight">151.964</span></td>
+      <td class="element" id="Gd"><span class="number">64<br></span><span class="symbol">Gd<br></span><span class="name">Gadolinium<br></span><span class="weight">157.25</span></td>
+      <td class="element" id="Tb"><span class="number">65<br></span><span class="symbol">Tb<br></span><span class="name">Terbium<br></span><span class="weight">158.92535</span></td>
+      <td class="element" id="Dy"><span class="number">66<br></span><span class="symbol">Dy<br></span><span class="name">Dysprosium<br></span><span class="weight">162.500</span></td>
+      <td class="element" id="Ho"><span class="number">67<br></span><span class="symbol">Ho<br></span><span class="name">Holmium<br></span><span class="weight">164.93033</span></td>
+      <td class="element" id="Er"><span class="number">68<br></span><span class="symbol">Er<br></span><span class="name">Erbium<br></span><span class="weight">167.259</span></td>
+      <td class="element" id="Tm"><span class="number">69<br></span><span class="symbol">Tm<br></span><span class="name">Thulium<br></span><span class="weight">168.93422</span></td>
+      <td class="element" id="Yb"><span class="number">70<br></span><span class="symbol">Yb<br></span><span class="name">Ytterbium<br></span><span class="weight">173.054</span></td>
+      <td class="element" id="Lu"><span class="number">71<br></span><span class="symbol">Lu<br></span><span class="name">Lutetium<br></span><span class="weight">174.9668</span></td>
+      <td class="empty"></td>
+    </tr>
+    <tr>
+      <td colspan="18" class="empty"></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="empty"></td>
+      <td class="element" id="Th"><span class="number">90<br></span><span class="symbol">Th<br></span><span class="name">Thorium<br></span><span class="weight">232.0377</span></td>
+      <td class="element" id="Pa"><span class="number">91<br></span><span class="symbol">Pa<br></span><span class="name">Protactinium<br></span><span class="weight">231.03588</span></td>
+      <td class="element" id="U"><span class="number">92<br></span><span class="symbol">U<br></span><span class="name">Uranium<br></span><span class="weight">238.02891</span></td>
+      <td class="element" id="Np"><span class="number">93<br></span><span class="symbol">Np<br></span><span class="name">Neptunium<br></span><span class="weight">[237]</span></td>
+      <td class="element" id="Pu"><span class="number">94<br></span><span class="symbol">Pu<br></span><span class="name">Plutonium<br></span><span class="weight">[244]</span></td>
+      <td class="element" id="Am"><span class="number">95<br></span><span class="symbol">Am<br></span><span class="name">Americium<br></span><span class="weight">[243]</span></td>
+      <td class="element" id="Cm"><span class="number">96<br></span><span class="symbol">Cm<br></span><span class="name">Curium<br></span><span class="weight">[247]</span></td>
+      <td class="element" id="Bk"><span class="number">97<br></span><span class="symbol">Bk<br></span><span class="name">Berkelium<br></span><span class="weight">[247]</span></td>
+      <td class="element" id="Cf"><span class="number">98<br></span><span class="symbol">Cf<br></span><span class="name">Californium<br></span><span class="weight">[251]</span></td>
+      <td class="element" id="Es"><span class="number">99<br></span><span class="symbol">Es<br></span><span class="name">Einsteinium<br></span><span class="weight">[252]</span></td>
+      <td class="element" id="Fm"><span class="number">100<br></span><span class="symbol">Fm<br></span><span class="name">Fermium<br></span><span class="weight">[257]</span></td>
+      <td class="element" id="Md"><span class="number">101<br></span><span class="symbol">Md<br></span><span class="name">Mendelevium<br></span><span class="weight">[258]</span></td>
+      <td class="element" id="No"><span class="number">102<br></span><span class="symbol">No<br></span><span class="name">Nobelium<br></span><span class="weight">[259]</span></td>
+      <td class="element" id="Lr"><span class="number">103<br></span><span class="symbol">Lr<br></span><span class="name">Lawrencium<br></span><span class="weight">[262]</span></td>
+      <td class="empty"></td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h2 class="about">Latest Updates</h2>
+    <p>We have a new button <code>m=nM</code>. (4 March 2018)</p>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h2 class="about">About</h2>
+    <p>Use this visual tool for calculating molar mass for any chemical formula. Options for hiding the symbol or name of the elements provide a handy
+       learning aid for memorizing the periodic table. Please note that the chemical formula is not limited to the known chemical compounds.</p>
+    <p>This periodic table is created by <a href="http://users.jyu.fi/~kjhelttu/">Dr Kaisa Helttunen</a> and Heikki Kainulainen.</p>
+  </div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h2 class="about">iOS</h2>
+    <p>We have also created a Periodic Table app for iOS.</p>
+    <p><a href="https://itunes.apple.com/fi/app/periodic-table-with-molar-mass/id1191623829?mt=8"><img src="3rd/apple.svg" alt="App Store" height="40" width="135"></a></p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2 class="about">References</h2>
+      <p>Atomic weights are according to IUPAC &copy; 2013 (<em>Pure Appl. Chem.</em>, Vol. 85, pp. 1047-1078, 2013).</p>
+      <p>Revised values for aluminium, arsenic, beryllium, cadmium, caesium, cobalt, fluorine, gold, holmium, manganese, molybdenum, niobium, phosphorus, praseodymium, scandium, selenium, thorium, 
+      thulium and yttrium are taken from <a href="https://iupac.org/what-we-do/periodic-table-of-elements/">IUPAC website</a>.</p>
+      <p>Conventional atomic weights are used for boron, bromine, carbon, chlorine, hydrogen, lithium, magnesium, nitrogen, oxygen, silicon, sulfur and thallium.</p>
+      <p>For radioactive elements with no stable isotopes, mass number of the most stable isotope is shown in brackets.</p>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Chemical formula</h4>
+      </div>
+      <div class="modal-body">
+      <form id="modal_form" class="form-horizontal">
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="save_changes" form="modal_form" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="massModal" tabindex="-1" role="dialog" aria-labelledby="massModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="massModalLabel">m=nM</h4>
+      </div>
+      <div class="modal-body">
+      <form id="mass_modal_form" class="form-horizontal">
+        <div class="form-group">
+          <label for="inputMass" class="col-sm-4 control-label">Mass (m)</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input type="text" class="form-control" id="inputMass" aria-describedby="input-mass-addon">
+              <span class="input-group-addon" id="input-mass-addon">g</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputMoles" class="col-sm-4 control-label">Amount (n)</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input type="text" class="form-control" id="inputMoles" aria-describedby="input-moles-addon">
+              <span class="input-group-addon" id="input-moles-addon">mol</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputMolarMass" class="col-sm-4 control-label">Molar Mass (M)</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <input type="text" class="form-control" id="inputMolarMass" disabled aria-describedby="input-molar-mass-addon">
+              <span class="input-group-addon" id="input-molar-mass-addon">g/mol</span>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="3rd/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="3rd/bootstrap.min.js"><\/script>')}</script>
+<div id="bootstrapCssTest" class="hidden"></div>
+<script>
+  $(function() {
+    if ($('#bootstrapCssTest').is(':visible')) {
+      $("head").prepend('<link rel="stylesheet" href="3rd/bootstrap.min.css">');
+    }
+  });
+</script>
+<script src="3rd/big.min.js"></script>
+<script src="periodic-table.js"></script>
+</body>
+</html>

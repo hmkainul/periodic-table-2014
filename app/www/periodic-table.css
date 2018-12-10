@@ -1,0 +1,123 @@
+body {
+    text-align: center;
+}
+
+#result_element {
+    text-align: left;
+    margin-right: 20px;
+}
+
+#result_header, #result_formula {
+    padding: 10px;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+h2.about {
+    margin-top: 0px;
+}
+
+span.result_header {
+    font-size: 0.6em;
+}
+
+span.name {
+    font-size: 0.7em;
+}
+
+span.weight {
+    font-size: 0.6em;
+}
+
+span.symbol {
+    font-size: 2.0em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+td {
+    border: 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    padding-right: 1px;
+    width: 5.55%;
+}
+
+td.group {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+td.element:hover {
+    cursor: pointer;
+}
+
+td.element:active {
+    color: gray;
+}
+
+td.empty {
+    border: none;
+}
+
+#H,#C,#N,#O,#P,#S,#Se {
+    /* other non metals */
+    background-color: #DA70D6;
+}
+
+#Al,#Ga,#In,#Sn,#Tl,#Pb,#Bi {
+    /* other main group elements */
+    background-color: #B0C4DE;
+}
+
+#Li,#Na,#K,#Rb,#Cs,#Fr {
+    /* alkali metals */
+    background-color: #FFDEAD;
+}
+
+#Be,#Mg,#Ca,#Sr,#Ba,#Ra {
+    /* alkali earth metals */
+    background-color: #48D1CC;
+}
+
+#Sc,#Ti,#V,#Cr,#Mn,#Fe,#Co,#Ni,#Cu,#Zn,#Y,#Zr,#Nb,#Mo,#Tc,#Ru,#Rh,#Pd,#Ag,#Cd,#Hf,#Ta,#W,#Re,#Os,#Ir,#Pt,#Au,#Hg {
+    /* transition metals */
+    background-color: #F0E68C;
+}
+
+#B,#Si,#Ge,#As,#Sb,#Te,#Po {
+    /* metalloids */
+    background-color: #FFD700;
+}
+
+#F,#Cl,#Br,#I,#At {
+    /* halogens */
+    background-color: #90EE90;
+}
+
+#He,#Ne,#Ar,#Kr,#Xe,#Rn {
+    /* noble gases */
+    background-color: #FFB6C1;
+}
+
+#La,#Ce,#Pr,#Nd,#Pm,#Sm,#Eu,#Gd,#Tb,#Dy,#Ho,#Er,#Tm,#Yb,#Lu {
+    /* lanthanoids */
+    background-color: #87CEFA;
+}
+
+#Ac,#Th,#Pa,#U,#Np,#Pu,#Am,#Cm,#Bk,#Cf,#Es,#Fm,#Md,#No,#Lr {
+    /* actinoids */
+    background-color: #F4A460;
+}
+
+#Rf,#Db,#Sg,#Bh,#Hs,#Mt,#Ds,#Rg,#Cn,#Nh,#Fl,#Mc,#Lv,#Ts,#Og {
+    /* synthetic and radioactive */
+    background-color: #DCDCDC;
+}
