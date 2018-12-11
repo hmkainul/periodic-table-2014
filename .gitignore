@@ -1,2 +1,4 @@
 .DS_Store
 app/www/3rd/
+node_modules
+app/www/main.js
