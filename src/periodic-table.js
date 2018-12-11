@@ -137,7 +137,7 @@ $(document).ready(function() {
         dialog.empty();
         for (var i = 0; i < sortedElements.length; i++) {
             var name = sortedElements[i];
-            var t = '<div class="form-group form-group-lg"><label for="' + name + '_popup" class="col-md-4 control-label">'
+            var t = '<div class="form-group row form-group-lg"><label for="' + name + '_popup" class="col-md-4 control-label">'
                + name + '</label><div class="col-md-8"><input type="number" min="0" name="'
                + name + '_popup" id="' + name + '_popup" class="form-control" value="' + result[name] + '"></div></div>';
             dialog.append(t);
