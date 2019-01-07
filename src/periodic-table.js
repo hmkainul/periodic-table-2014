@@ -10,11 +10,13 @@ $(document).ready(function() {
     var sortedElements = [];
     var percent = false;
 
-    $("td.element").mousedown(function(e) {
+    var ELEMENT = "td.element";
+
+    $(ELEMENT).mousedown(function(e) {
         e.preventDefault();
     });
 
-    $("td.element").click(function() {
+    $(ELEMENT).click(function() {
         var number = $(this).find(".number").text();
         var symbol = $(this).find(".symbol").text();
         var name = $(this).find(".name").text();
@@ -42,7 +44,7 @@ $(document).ready(function() {
         $("#symbol_text").text("Symbol");
         $("#name_text").text("Name");
         $("#weight_text").text("Weight");
-        $("td.element").css("background-color", "");
+        $(ELEMENT).css("background-color", "");
         $(".hide_me").hide();
         $("#result_header").show();
     });
