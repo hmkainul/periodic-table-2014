@@ -40,10 +40,10 @@ $(document).ready(function() {
 
     $("#clear").click(function() {
         result = {};
-        $("#number_text").text("Number");
-        $("#symbol_text").text("Symbol");
-        $("#name_text").text("Name");
-        $("#weight_text").text("Weight");
+        PARTS.forEach(function(name) {
+            var text = name.substring(0, 1).toUpperCase() + name.substring(1);
+            $("#" + name + "_text").text(text);
+        });
         $(ELEMENT).css("background-color", "");
         $(".hide_me").hide();
         $("#result_header").show();
