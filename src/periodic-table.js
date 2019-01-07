@@ -11,21 +11,21 @@ $(document).ready(function() {
     var percent = false;
 
     var ELEMENT = "td.element";
+    var PARTS = ["number", "symbol", "name", "weight"];
 
     $(ELEMENT).mousedown(function(e) {
         e.preventDefault();
     });
 
     $(ELEMENT).click(function() {
-        var number = $(this).find(".number").text();
-        var symbol = $(this).find(".symbol").text();
-        var name = $(this).find(".name").text();
-        var weight = $(this).find(".weight").text();
-        $("#number_text").text(number);
-        $("#symbol_text").text(symbol);
-        $("#name_text").text(name);
-        $("#weight_text").text(weight);
-        if (weight) {
+        var current = {};
+        var that = this;
+        PARTS.forEach(function(name) {
+            current[name] = $(that).find("." + name).text();
+            $("#" + name + "_text").text(current[name]);
+        });
+        if (current.weight) {
+            var symbol = current.symbol;
             $(this).css("background-color", "white");
             if (result[symbol]) {
                 result[symbol] = Number(result[symbol]) + 1;
