@@ -49,20 +49,10 @@ $(document).ready(function() {
         $("#result_header").show();
     });
 
-    $("#number").click(function() {
-        $("span.number").toggle();
-    });
-
-    $("#symbol").click(function() {
-        $("span.symbol").toggle();
-    });
-
-    $("#name").click(function() {
-        $("span.name").toggle();
-    });
-
-    $("#weight").click(function() {
-        $("span.weight").toggle();
+    PARTS.forEach(function(name) {
+        $("#" + name).click(function() {
+            $("span." + name).toggle();
+        });
     });
 
     function findWeight(name) {
