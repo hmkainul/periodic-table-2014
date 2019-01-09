@@ -1,9 +1,3 @@
-import 'bootstrap/js/dist/util';
-import 'bootstrap/js/dist/modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Big from 'big.js';
-import './periodic-table.css'
-
 $(document).ready(function() {
 
     var result = {};

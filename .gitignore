@@ -1,4 +1,3 @@
 .DS_Store
-app/www/3rd/
-node_modules
-app/www/main.js
+app/www/big.min.js
+app/www/apple.svg
