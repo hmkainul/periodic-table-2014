@@ -159,6 +159,7 @@ $(document).ready(function() {
 
     $("#inputMass, #inputMoles").on("change paste keyup", function() {
         var x = $(this).val().replace(/,/g, ".").replace(/ /g, "");
+        var errorClass = "is-invalid";
         try {
             var result;
             var other = "inputMass";
@@ -169,9 +170,9 @@ $(document).ready(function() {
                 result = Big(x).times(Big(molarMass()));
             }
             $("#" + other).val(result);
-            $("#mass_modal_form").find(".form-group").removeClass("has-error");
+            $("#mass_modal_form").find(".form-control").removeClass(errorClass);
         } catch (e) {
-            $(this).closest(".form-group").addClass("has-error");
+            $(this).addClass(errorClass);
         }
     });
 
